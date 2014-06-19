@@ -9,7 +9,6 @@ namespace MarkovChain
     public class Parameter
     {
         static Random random = new Random();
-        //double ShaveFraction;
         public UniversalDistribution distribution;
         List<double> values;
         List<double> probabilities;
@@ -89,7 +88,7 @@ namespace MarkovChain
             values = new List<double>();
             probabilities = new List<double>();
         }
-        public Parameter(string label, double Min, double Max, double ShaveFraction)
+        public Parameter(string label, double Min, double Max)
         {
             this.label = label;
             distribution = new UniversalDistribution(Min, Max);
