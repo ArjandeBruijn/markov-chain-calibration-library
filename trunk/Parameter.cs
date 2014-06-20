@@ -81,16 +81,16 @@ namespace MarkovChain
             values = new List<double>();
             probabilities = new List<double>();
         }
-        public Parameter(string label, double Min, double Max)
+        public Parameter(string label, double Min, double Max, double Initial)
         {
             this.label = label;
             distribution = new UniversalDistribution(Min, Max);
-            
+
             values = new List<double>();
             probabilities = new List<double>();
 
-            RunningValue = Min + 0.5F * distribution.Range;
             LastAcceptedValue = runningvalue;
         }
+      
     }
 }
