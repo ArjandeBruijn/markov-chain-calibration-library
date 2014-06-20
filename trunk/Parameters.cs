@@ -6,7 +6,7 @@ namespace MarkovChain
 {
     public delegate bool ValidParameterVector(Parameters parameters);
 
-    public class Parameters
+    public class Parameters // : IEnumerable<Parameter>
     {
         ValidParameterVector checkparameters;
 
@@ -112,5 +112,6 @@ namespace MarkovChain
             checkparameters = checkoutofrange;
             modelparameters = new List<Parameter>();
         }
+        //public GetEnumerator
     }
 }

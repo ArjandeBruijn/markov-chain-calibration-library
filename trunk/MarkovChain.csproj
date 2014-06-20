@@ -8,8 +8,8 @@
     <ProjectGuid>{6586B303-BED3-4CC3-A948-314C8B4A8A9E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CalibrationLibrary</RootNamespace>
-    <AssemblyName>CalibrationLibrary</AssemblyName>
+    <RootNamespace>MarkovChain</RootNamespace>
+    <AssemblyName>MarkovChain</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
