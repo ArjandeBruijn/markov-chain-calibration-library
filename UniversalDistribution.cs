@@ -9,6 +9,7 @@ namespace MarkovChain
         public double Min;
         public double Max;
 
+         
         public bool InDomain(double v)
         {
             if (v > Min && v < Max) return true;

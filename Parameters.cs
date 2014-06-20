@@ -70,10 +70,6 @@ namespace MarkovChain
         {
             foreach (Parameter p in ModelParameters)
             {
-                if (p.OutOfRange())
-                {
-                    throw new System.Exception("Parameter "+ p.Label +" should not be out of range here...");
-                }
                 p.AcceptRunningValue();
             }
         }

@@ -83,13 +83,17 @@ namespace MarkovChain
         }
         public Parameter(string label, double Min, double Max, double Initial)
         {
+            
             this.label = label;
             distribution = new UniversalDistribution(Min, Max);
 
             values = new List<double>();
             probabilities = new List<double>();
 
+            runningvalue = Initial;
             LastAcceptedValue = runningvalue;
+
+            if (OutOfRange()) throw new System.Exception("Cannot initialize parameter "+ label +" with value "+Initial +" domain = ["+ distribution.Min +"," + distribution.Max +"]");
         }
       
     }
