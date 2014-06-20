@@ -12,10 +12,10 @@ namespace MarkovChain
         
         public static double fractionofdomain;
 
-        public delegate double GetProbability(Parameters parameters);
+        public delegate double GetLogProbability(Parameters parameters);
 
-        
-        public static void RunMCMC(Parameters parameters, GetProbability getmodelprobability, int Iterations, double JumpSize)
+
+        public static void RunMCMC(Parameters parameters, GetLogProbability getlogmodelprobability, int Iterations, double JumpSize)
         {
             fractionofdomain = JumpSize;
 
@@ -23,7 +23,7 @@ namespace MarkovChain
 
             for (int i = 0; i < Iterations; i++)
             {
-                double logp = getmodelprobability(parameters);
+                double logp = getlogmodelprobability(parameters);
 
                 double LogMetropolisAlpha = logp - LogP_last;
 

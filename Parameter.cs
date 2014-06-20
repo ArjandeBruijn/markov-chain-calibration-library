@@ -5,8 +5,8 @@ using System.Text;
 
 namespace MarkovChain
 {
-    
-    public class Parameter
+
+    public class Parameter  
     {
         static Random random = new Random();
         public UniversalDistribution distribution;
@@ -31,10 +31,6 @@ namespace MarkovChain
             get
             {
                 return runningvalue;
-            }
-            set
-            {
-                runningvalue = value;
             }
         }
         double Min(List<double> v)
