@@ -39,6 +39,15 @@ namespace MarkovChain
                     parameters.UseLastAcceptedValues();
                 }
 
+                foreach (Parameter p in parameters.ModelParameters)
+                {
+                    if (p.OutOfRange())
+                    {
+                        throw new System.Exception("Parameter " + p.Label + " should not be out of range here...");
+                    }
+                    p.AcceptRunningValue();
+                }
+
                 LogP_last = logp;
             }
             System.Console.WriteLine("ready");

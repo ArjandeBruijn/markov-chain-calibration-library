@@ -90,18 +90,7 @@ namespace MarkovChain
             }
             while (checkparameters(this) == false);
         }
-        public void RandomJump()
-        {
-            do
-            {
-                foreach (Parameter p in ModelParameters)
-                {
-                    p.RandomJump();
-                }
-            }
-            while (!checkparameters(this));
-        }
-
+        
         public Parameters(ValidParameterVector Checkparameters)
         {
             checkparameters = Checkparameters;

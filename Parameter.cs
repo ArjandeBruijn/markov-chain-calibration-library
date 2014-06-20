@@ -66,10 +66,7 @@ namespace MarkovChain
         {
             runningvalue = LastAcceptedValue + (random.NextDouble() - 0.5F) * FractionOfDomain * distribution.Range;
         }
-        public void RandomJump()
-        {
-            runningvalue = distribution.Min + random.NextDouble() * distribution.Range;
-        }
+      
         public void AddValueAndProbability(double probability)
         {
             values.Add(runningvalue);
@@ -92,8 +89,7 @@ namespace MarkovChain
             values = new List<double>();
             probabilities = new List<double>();
 
-            // Take a random value within the domain
-            RandomJump();
+            RunningValue = Min + 0.5F * distribution.Range;
             LastAcceptedValue = runningvalue;
         }
     }
