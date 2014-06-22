@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MarkovChain
+namespace MarkovCalibrationChain
 {
-    public class MCMC
+    public static class MCMC
     {
+        static OutputFile output =null;
         static Random R = new Random();
         static bool accepted;
         
@@ -14,9 +15,14 @@ namespace MarkovChain
 
         public delegate double GetLogProbability(Parameters parameters);
 
+        public static void CreateOutputFile(string FileName)
+        {
+            output = new OutputFile(FileName);
+        }
 
         public static void RunMCMC(Parameters parameters, GetLogProbability getlogmodelprobability, int Iterations, double JumpSize)
         {
+            
             fractionofdomain = JumpSize;
 
             double LogP_last = double.MinValue;
@@ -39,16 +45,9 @@ namespace MarkovChain
                     parameters.UseLastAcceptedValues();
                 }
 
-                foreach (Parameter p in parameters.ModelParameters)
-                {
-                    if (p.OutOfRange())
-                    {
-                        throw new System.Exception("Parameter " + p.Label + " should not be out of range here...");
-                    }
-                    p.AcceptRunningValue();
-                }
-
                 LogP_last = logp;
+
+                if (output!= null) output.AddLine(i, logp, LogMetropolisAlpha, accepted);
             }
             System.Console.WriteLine("ready");
             //System.Console.ReadLine();

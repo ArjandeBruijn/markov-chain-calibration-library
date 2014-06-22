@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MarkovChain
+namespace MarkovCalibrationChain
 {
     public delegate bool ValidParameterVector(Parameters parameters);
 
