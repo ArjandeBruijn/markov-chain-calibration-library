@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MarkovChain
+namespace MarkovCalibrationChain
 {
     public class UniversalDistribution
     {
         public double Min;
         public double Max;
 
-         
         public bool InDomain(double v)
         {
             if (v > Min && v < Max) return true;
