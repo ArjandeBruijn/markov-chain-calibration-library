@@ -21,8 +21,6 @@ namespace MarkovCalibrationChain
             return true;
         }
 
-         
-
         public List<Parameter> ModelParameters
         {
             get
@@ -38,9 +36,9 @@ namespace MarkovCalibrationChain
                 return Get(label);
             }
         }
-        public void Add(Parameter p)
+        public void Add(string label, double Min, double Max, double Initial)
         {
-            modelparameters.Add(p);
+            modelparameters.Add(new Parameter(label, Min, Max, Initial));
         }
         public string Values(int decimals)
         {
