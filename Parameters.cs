@@ -57,22 +57,22 @@ namespace MarkovCalibrationChain
             }
             return null;          
         }
-        public void UseLastAcceptedValues()
+        internal void UseLastAcceptedValues()
         {
             foreach (Parameter p in ModelParameters)
             {
                 p.UseLastAcceptedValue();
             }
         }
-        public void AcceptRunningValues()
+        internal void AcceptRunningValues()
         {
             foreach (Parameter p in ModelParameters)
             {
                 p.AcceptRunningValue();
             }
         }
-        
-        public void Jump(double FractionOfDomain)
+
+        internal void Jump(double FractionOfDomain)
         {
             
             do
@@ -84,7 +84,7 @@ namespace MarkovCalibrationChain
             }
             while (checkparameters(this) == false);
         }
-        
+
         public Parameters(ValidParameterVector Checkparameters)
         {
             checkparameters = Checkparameters;
