@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MarkovCalibrationChain
 {
-    public class UniversalDistribution
+    internal class UniversalDistribution
     {
         public double Min;
         public double Max;

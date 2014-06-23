@@ -11,7 +11,7 @@ namespace MarkovCalibrationChain
         static Random R = new Random();
         static bool accepted;
         
-        public static double fractionofdomain;
+        private static double jumpsize;
 
         public delegate double GetLogProbability(Parameters parameters);
 
@@ -22,8 +22,8 @@ namespace MarkovCalibrationChain
 
         public static void RunMCMC(Parameters parameters, GetLogProbability getlogmodelprobability, int Iterations, double JumpSize)
         {
-            
-            fractionofdomain = JumpSize;
+
+            jumpsize = JumpSize;
 
             double LogP_last = double.MinValue;
 
@@ -38,7 +38,7 @@ namespace MarkovCalibrationChain
                 if (accepted)
                 {
                     parameters.AcceptRunningValues();
-                    parameters.Jump(fractionofdomain);
+                    parameters.Jump(jumpsize);
                 }
                 else
                 {

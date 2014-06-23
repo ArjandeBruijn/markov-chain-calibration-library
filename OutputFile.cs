@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MarkovCalibrationChain
 {
-    class OutputFile
+    internal class OutputFile
     {
         static System.IO.StreamWriter sw;
         static string filename;

@@ -9,7 +9,7 @@ namespace MarkovCalibrationChain
     public class Parameter  
     {
         static Random random = new Random();
-        public UniversalDistribution distribution;
+        internal UniversalDistribution distribution;
         List<double> values;
         List<double> probabilities;
         double runningvalue;
@@ -74,14 +74,14 @@ namespace MarkovCalibrationChain
 
            
         }
-        public Parameter(Parameter p)
+        internal Parameter(Parameter p)
         {
             this.label = p.label;
             distribution = new UniversalDistribution(p.distribution.Min, p.distribution.Max);
             values = new List<double>();
             probabilities = new List<double>();
         }
-        public Parameter(string label, double Min, double Max, double Initial)
+        internal Parameter(string label, double Min, double Max, double Initial)
         {
             this.label = label;
             distribution = new UniversalDistribution(Min, Max);
