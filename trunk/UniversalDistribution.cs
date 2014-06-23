@@ -6,22 +6,22 @@ namespace MarkovCalibrationChain
 {
     internal class UniversalDistribution
     {
-        public double Min;
-        public double Max;
+        internal double Min;
+        internal double Max;
 
-        public bool InDomain(double v)
+        internal bool InDomain(double v)
         {
             if (v > Min && v < Max) return true;
             return false;
         }
-        public double Range
+        internal double Range
         {
             get
             {
                 return Max - Min;
             }
         }
-        public UniversalDistribution(double Min, double Max)
+        internal UniversalDistribution(double Min, double Max)
         {
             this.Min = Min;
             this.Max = Max;
