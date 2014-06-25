@@ -5,22 +5,23 @@ using System.Text;
 
 namespace MarkovCalibrationChain
 {
-    public static class MCMC
+    public class MCMC
     {
+        private static Parameters parameters;
+        private static GetLogProbability getlogprobability;
+
         static OutputFile output =null;
         static Random R = new Random();
         static bool accepted;
-        
         private static double jumpsize;
-
         public delegate double GetLogProbability(Parameters parameters);
 
-        public static void CreateOutputFile(string FileName)
+        public void CreateOutputFile(string FileName)
         {
-            output = new OutputFile(FileName);
+            output = new OutputFile(FileName, parameters);
         }
 
-        public static void RunMCMC(Parameters parameters, GetLogProbability getlogmodelprobability, int Iterations, double JumpSize)
+        public void RunMCMC(int Iterations, double JumpSize)
         {
 
             jumpsize = JumpSize;
@@ -29,7 +30,7 @@ namespace MarkovCalibrationChain
 
             for (int i = 0; i < Iterations; i++)
             {
-                double logp = getlogmodelprobability(parameters);
+                double logp = getlogprobability(parameters);
 
                 double LogMetropolisAlpha = logp - LogP_last;
 
@@ -47,11 +48,15 @@ namespace MarkovCalibrationChain
 
                 LogP_last = logp;
 
-                if (output!= null) output.AddLine(i, logp, LogMetropolisAlpha, accepted);
+                if (output!= null) output.AddLine(i,parameters, logp, LogMetropolisAlpha, accepted);
             }
             System.Console.WriteLine("ready");
             //System.Console.ReadLine();
         }
-
+        public MCMC(Parameters Parameters, GetLogProbability GetLogModelProbability)
+        {
+            parameters = Parameters;
+            getlogprobability = GetLogModelProbability;
+        }
     }
 }
