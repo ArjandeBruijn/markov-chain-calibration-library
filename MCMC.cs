@@ -33,8 +33,11 @@ namespace MarkovCalibrationChain
                 double logp = getlogprobability(parameters);
 
                 double LogMetropolisAlpha = logp - LogP_last;
+                LogP_last = logp;
 
                 accepted = LogMetropolisAlpha > Math.Log(R.NextDouble());
+
+                if (output != null) output.AddLine(i, parameters, logp, LogMetropolisAlpha, accepted);
 
                 if (accepted)
                 {
@@ -46,9 +49,7 @@ namespace MarkovCalibrationChain
                     parameters.UseLastAcceptedValues();
                 }
 
-                LogP_last = logp;
-
-                if (output!= null) output.AddLine(i,parameters, logp, LogMetropolisAlpha, accepted);
+                
             }
             System.Console.WriteLine("ready");
             //System.Console.ReadLine();
