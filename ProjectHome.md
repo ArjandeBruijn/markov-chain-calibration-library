@@ -1,0 +1,1 @@
+This is a very basic implementation of MCMC that allows only uniform prior distributions.
