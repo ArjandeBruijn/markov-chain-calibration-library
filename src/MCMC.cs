@@ -7,14 +7,18 @@ namespace MarkovCalibrationChain
 {
     public class MCMC
     {
+        public delegate double GetLogProbability(Parameters parameters);
+        public delegate void AcceptedEventHandler();
+
         private static Parameters parameters;
         private static GetLogProbability getlogprobability;
+        public static AcceptedEventHandler accepted_event_handler =null;
 
         static OutputFile output =null;
         static Random R = new Random();
         static bool accepted;
         private static double jumpsize;
-        public delegate double GetLogProbability(Parameters parameters);
+        
 
         public void CreateOutputFile(string FileName)
         {
@@ -41,6 +45,10 @@ namespace MarkovCalibrationChain
 
                 if (accepted)
                 {
+                    if (accepted_event_handler != null)
+                    {
+                        accepted_event_handler();
+                    }
                     parameters.AcceptRunningValues();
                     parameters.Jump(jumpsize);
                 }
